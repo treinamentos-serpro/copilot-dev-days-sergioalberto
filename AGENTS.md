@@ -28,4 +28,14 @@ Before completing any development change, run all three checks from the reposito
 - Use only custom agents currently present in `.github/agents/`; add focused tests for behavior changes.
 - Avoid generated output and unrelated changes. Browser, accessibility, and responsive behavior lack comprehensive automated coverage.
 
+## Design Guide
+
+- Keep the application visual language **Cyberpunk Neon**: a near-black grid-textured background, angular panels, monospaced operational labels, and restrained cyan, magenta, and yellow accents.
+- Use the existing theme tokens in `socops/src/main/resources/static/css/app.css` (`--void`, `--panel`, `--ink`, `--muted`, `--cyan`, `--pink`, and `--yellow`) instead of introducing unrelated colors.
+- Treat the lobby and board as a focused game interface, not a marketing landing page. Keep the 5x5 board central, dense, square, and usable on mobile without horizontal scrolling.
+- Preserve clear visual states for open tiles, selected tiles, the selected free center tile, and winning streak tiles. Use yellow for victory feedback and reserve magenta for system accents and focus indicators.
+- Keep the existing DOM IDs, JavaScript game flow, `localStorage` snapshot format, and API contract stable when making visual changes. Update inline tile classes in `game.html` together with their CSS definitions.
+- Maintain visible `:focus-visible` states, readable contrast, contained prompt text, minimum 60px tile height, and `prefers-reduced-motion` support.
+- Prefer CSS-only atmosphere and motion. Do not add remote fonts, images, icon libraries, or frontend dependencies unless the change has a clear product need and is validated on mobile.
+
 Link to canonical docs instead of duplicating them: [README](README.md), [README em português](README.pt_BR.md), [workshop guide](workshop/GUIDE.md), [setup](workshop/01-setup.md), [frontend design](workshop/02-design.md), [multi-agent lab](workshop/04-multi-agent.md), and [contributing](CONTRIBUTING.md).
