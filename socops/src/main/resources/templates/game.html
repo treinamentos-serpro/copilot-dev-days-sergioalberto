@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="theme-color" content="#090b14"/>
-    <title>Soc Ops // Social Bingo</title>
+    <title>Tech Life Bingo // Soc Ops</title>
     <link rel="stylesheet" th:href="@{/css/app.css}"/>
     <link rel="icon" type="image/png" th:href="@{/favicon.png}"/>
 </head>
@@ -15,30 +15,46 @@
 <!-- ============================================================= -->
 <div id="lobbyView" class="lobby-screen">
     <div class="lobby-shell">
-        <div class="system-label"><span class="status-dot"></span> SOCIAL OPERATIONS // ONLINE</div>
-        <div class="lobby-heading">
-            <p class="eyebrow">FIELD PROTOCOL 05x05</p>
-            <h1>Soc<span>Ops</span></h1>
-            <p class="lobby-subtitle">Social Bingo // Find your people.</p>
-        </div>
+        <header class="landing-nav">
+            <div class="system-label"><span class="status-dot"></span> TECH LIFE OPERATIONS</div>
+            <div class="nav-code">SYS_05 // <span>ONLINE</span></div>
+        </header>
+        <main class="landing-hero">
+            <div class="lobby-heading">
+                <p class="eyebrow">TECH LIFE PROTOCOL 05x05</p>
+                <h1>Tech<span>Life</span></h1>
+                <p class="lobby-subtitle">Tech Life Bingo // Conecte-se.</p>
+                <p class="hero-copy">Transforme experiências digitais em conexões reais. Encontre a pergunta. Encontre a pessoa. Faça a conexão.</p>
+                <button onclick="launchGame()" class="launch-button">
+                    <span>Initialize Game</span><span class="button-arrow">-&gt;</span>
+                </button>
+                <p class="lobby-footer">NO ACCOUNT REQUIRED <span>//</span> LOCAL SESSION</p>
+            </div>
+
+            <div class="signal-board" aria-hidden="true">
+                <div class="signal-board-header"><span>TECH CONNECTION MAP</span><span>SCAN_READY</span></div>
+                <div class="signal-grid">
+                    <i class="signal-cell is-lit"></i><i class="signal-cell"></i><i class="signal-cell is-hot"></i><i class="signal-cell"></i><i class="signal-cell is-lit"></i>
+                    <i class="signal-cell"></i><i class="signal-cell is-lit"></i><i class="signal-cell"></i><i class="signal-cell is-hot"></i><i class="signal-cell"></i>
+                    <i class="signal-cell is-hot"></i><i class="signal-cell"></i><i class="signal-cell is-core">+</i><i class="signal-cell"></i><i class="signal-cell is-lit"></i>
+                    <i class="signal-cell"></i><i class="signal-cell is-lit"></i><i class="signal-cell"></i><i class="signal-cell is-lit"></i><i class="signal-cell"></i>
+                    <i class="signal-cell is-lit"></i><i class="signal-cell"></i><i class="signal-cell is-hot"></i><i class="signal-cell"></i><i class="signal-cell is-lit"></i>
+                </div>
+                <div class="signal-board-footer"><span>25 NODES</span><span>01 CONNECTION</span></div>
+            </div>
+        </main>
 
         <div class="mission-panel">
             <div class="panel-corner panel-corner-top"></div>
-            <div class="panel-topline"><span>MISSION BRIEF</span><span>READY_01</span></div>
-            <h2>Build the connection.</h2>
+            <div class="panel-topline"><span>BRIEFING DA MISSÃO</span><span>READY_01</span></div>
+            <h2>Construa a conexão.</h2>
             <ul>
-                <li><span>01</span> Find people who match the questions</li>
-                <li><span>02</span> Tap a square when you find a match</li>
-                <li><span>03</span> Get 5 in a row to win</li>
+                <li><span>01</span> Encontre pessoas que combinam com as perguntas</li>
+                <li><span>02</span> Toque em uma casa quando encontrar alguém</li>
+                <li><span>03</span> Complete 5 em sequência para vencer</li>
             </ul>
             <div class="panel-corner panel-corner-bottom"></div>
         </div>
-
-        <button onclick="launchGame()"
-                class="launch-button">
-            <span>Initialize Game</span><span class="button-arrow">-&gt;</span>
-        </button>
-        <p class="lobby-footer">NO ACCOUNT REQUIRED <span>//</span> LOCAL SESSION</p>
     </div>
 </div>
 
@@ -53,14 +69,14 @@
                 class="back-button tile-active">
             &lt;- <span>ABORT</span>
         </button>
-        <div class="header-brand">SOC<span>OPS</span> <small>// LIVE</small></div>
-        <div class="header-status"><span class="status-dot"></span> <span>SYNCED</span></div>
+        <div class="header-brand">TECH<span>LIFE</span> <small>// AO VIVO</small></div>
+        <div class="header-status"><span class="status-dot"></span> <span>SINCRONIZADO</span></div>
     </header>
 
     <div class="game-intro">
-        <p class="eyebrow">ACTIVE FIELD GRID</p>
+        <p class="eyebrow">GRADE TECH ATIVA</p>
         <p>
-        Tap a square when you find someone who matches it.
+        Toque em uma casa quando encontrar alguém que combine com ela.
         </p>
     </div>
 
@@ -68,7 +84,7 @@
     <div id="bingoBanner"
          class="bingo-banner"
          style="display:none">
-        <span class="banner-signal">///</span> BINGO DETECTED <span class="banner-signal">///</span>
+        <span class="banner-signal">///</span> BINGO DETECTADO <span class="banner-signal">///</span>
     </div>
 
     <!-- the 5×5 grid -->
@@ -78,7 +94,7 @@
             <!-- tiles injected by JS -->
         </div>
     </div>
-    <footer class="game-footer"><span>GRID_LOCK: 25 NODES</span><span>WIN CONDITION: 05 LINKED</span></footer>
+    <footer class="game-footer"><span>GRADE: 25 CASAS</span><span>VITÓRIA: 05 CONECTADAS</span></footer>
 </div>
 
 <!-- ============================================================= -->
@@ -88,13 +104,13 @@
     class="victory-overlay"
      style="display:none">
     <div class="victory-modal">
-        <div class="victory-kicker">// OBJECTIVE COMPLETE //</div>
+        <div class="victory-kicker">// OBJETIVO CONCLUÍDO //</div>
         <div class="victory-icon">++</div>
         <h2>BINGO<span>!</span></h2>
-        <p>You completed a line.</p>
+        <p>Você completou uma sequência.</p>
         <button onclick="dismissVictoryModal()"
                 class="continue-button accent-active">
-            Continue Mission <span>-&gt;</span>
+            Continuar partida <span>-&gt;</span>
         </button>
     </div>
 </div>
@@ -158,7 +174,7 @@
 
             if (tile.freeCell) { btn.disabled = true; }
             btn.setAttribute("aria-pressed", String(tile.selected));
-            btn.setAttribute("aria-label", tile.freeCell ? "Free space" : tile.prompt);
+            btn.setAttribute("aria-label", tile.freeCell ? "Espaço livre" : tile.prompt);
 
             /* inner label */
             var labelSpan = document.createElement("span");
